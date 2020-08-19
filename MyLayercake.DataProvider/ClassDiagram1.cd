@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyLayercake.DataProvider.DatabaseSettings" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAABAAA=</HashCode>
+      <FileName>DatabaseSettings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyLayercake.DataProvider.DataProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAgAAACkCEgAIAAAIIAIgAAACABACAAgAIAAAAAEAA=</HashCode>
+      <FileName>Provider\DataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.DataProvider.MongoDBDataProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAgAAACkCEgAMAAAIIAIgAAACABACAAhAAAAAAAEAA=</HashCode>
+      <FileName>Provider\MongoDBDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.DataProvider.SqlDBDataProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAgAAACkCEgAIAAAIIAIgAAACABACAAgAAAAAAAEAA=</HashCode>
+      <FileName>Provider\SqlDBDataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.DataProvider.Factory.MongoDBFactory&lt;TEntity&gt;" Collapsed="true">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factory\MongoDBFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.DataProvider.Factory.ProviderFactory&lt;TEntity&gt;" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factory\ProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.DataProvider.Factory.SqlDBFactory&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factory\SqlDBFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.DataProvider.Entity.IEntityExtensions" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAgACAAAAIIAAAAAAACAAAAQJAAAA=</HashCode>
+      <FileName>Entity\IEntityExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MyLayercake.DataProvider.IDatabaseSettings" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAABAAA=</HashCode>
+      <FileName>IDatabaseSettings.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.DataProvider.Entity.IEntity" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.DataProvider.Entity.IMongoDBEntity" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\IMongoDBEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.DataProvider.Entity.ISqlDBEntity" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\ISqlDBEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

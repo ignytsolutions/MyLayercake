@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.Properties.InFileName" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\Properties\InFileName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.Properties.IsPrimaryKey" Collapsed="true">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\Properties\IsPrimaryKey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.DeleteProcedureName" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\DeleteProcedureName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.InsertProcedureName" Collapsed="true">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\InsertProcedureName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.SelectByIDProcedureName" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\SelectByIDProcedureName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.SelectProcedureName" Collapsed="true">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\SelectProcedureName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.TableName" Collapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\TableName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.Attributes.UpdateProcedureName" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\Attributes\UpdateProcedureName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Base.IEntityExtensions" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAgACAAAAIIAAAAAAACAAAAQJAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\IEntityExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Datalayer.DB.DBBase" Collapsed="true">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAQAAIABAAAAAAIAAAAEAAAAIACAAAEABAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\DB\DBBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Datalayer.Enums.DataTypes" Collapsed="true">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Enums\DataTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Datalayer.Provider.ConnectionString" Collapsed="true">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAMAEAgAAAAAAAAwAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Provider\ConnectionString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Datalayer.Provider.DataProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACwAECBGgEAGQEQjAESBAHCSgJCAQpACAChBAABAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Provider\DataProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Datalayer.Provider.DataProviderParameter" Collapsed="true">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAIAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Provider\DataProviderParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Datalayer.Provider.DBConection" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAEAAAAAACAAAAAAAgABAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Provider\DBConection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Logic.Base.DatabaseLogicHelper&lt;T&gt;" Collapsed="true">
+    <Position X="1.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAEAAACAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Logic.Base\DatabaseLogicHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Logic.Base.LogicBase&lt;T&gt;" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Logic.Base\LogicBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyLayercake.BusinessObjects.Logic.Base.UnitOfWork&lt;T&gt;" Collapsed="true">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACAAAAggAQAAAACAABAAAAAAAACAAEgAAAA=</HashCode>
+      <FileName>BusinessObjects.Logic.Base\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MyLayercake.BusinessObjects.Base.IEntity" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Base\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.BusinessObjects.Logic.Base.ILogic&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Logic.Base\ILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MyLayercake.BusinessObjects.Datalayer.Enums.Generic.Databases" Collapsed="true">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Enums\Generic\Databases.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MyLayercake.BusinessObjects.Datalayer.Enums.DBType" Collapsed="true">
+    <Position X="5.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAAAAEAAAAAAAAAAACAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Enums\DBType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MyLayercake.BusinessObjects.Datalayer.Enums.ProviderType" Collapsed="true">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>BusinessObjects.Datalayer\Enums\ProviderType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
