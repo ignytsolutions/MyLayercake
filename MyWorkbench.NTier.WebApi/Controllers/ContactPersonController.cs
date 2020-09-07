@@ -13,10 +13,10 @@ namespace MyWorkbench.NTier.WebApi.Controllers
     {
         [Route("api/ContactPerson/Get")]
         [HttpPost]
-        public JsonResult<List<ContactPerson>> Get() {
+        public JsonResult<ContactPersonList> Get() {
             ContactPersonList personlist = ContactPersonManager.GetList();
 
-            return Json<List<ContactPerson>>(personlist);
+            return Json<ContactPersonList>(personlist);
         }
 
         [HttpGet]
