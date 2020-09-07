@@ -13,6 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLayercake.UnitTests", "My
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLayercake.Utilities", "MyLayercake.Utilities\MyLayercake.Utilities.csproj", "{0AAF3E59-2FED-4A8C-8D14-B9A3C705224A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLayercake.Ntier.Example", "MyLayercake.Ntier.Example\MyLayercake.Ntier.Example.csproj", "{41F5509B-763B-41E6-AAD1-5FA96FF8092A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLayercake.NTier.Example.BusinesObjects", "MyLayercake.NTier.Example.BusinesObjects\MyLayercake.NTier.Example.BusinesObjects.csproj", "{9B01D2FD-603C-48AC-9113-D8CC09F54519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLayercake.NTier.Example.DataAccess", "MyLayercake.NTier.Example.DataAccess\MyLayercake.NTier.Example.DataAccess.csproj", "{68796925-4500-454A-BDBB-59A5CDFB8415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLayercake.NTier.Example.BusinessLayer", "MyLayercake.NTier.Example.BusinessLayer\MyLayercake.NTier.Example.BusinessLayer.csproj", "{D306F18E-EFE5-4F6D-9F1C-2A3B38FE681C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +47,22 @@ Global
 		{0AAF3E59-2FED-4A8C-8D14-B9A3C705224A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AAF3E59-2FED-4A8C-8D14-B9A3C705224A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AAF3E59-2FED-4A8C-8D14-B9A3C705224A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41F5509B-763B-41E6-AAD1-5FA96FF8092A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41F5509B-763B-41E6-AAD1-5FA96FF8092A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41F5509B-763B-41E6-AAD1-5FA96FF8092A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41F5509B-763B-41E6-AAD1-5FA96FF8092A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B01D2FD-603C-48AC-9113-D8CC09F54519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B01D2FD-603C-48AC-9113-D8CC09F54519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B01D2FD-603C-48AC-9113-D8CC09F54519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B01D2FD-603C-48AC-9113-D8CC09F54519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68796925-4500-454A-BDBB-59A5CDFB8415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68796925-4500-454A-BDBB-59A5CDFB8415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68796925-4500-454A-BDBB-59A5CDFB8415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68796925-4500-454A-BDBB-59A5CDFB8415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D306F18E-EFE5-4F6D-9F1C-2A3B38FE681C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D306F18E-EFE5-4F6D-9F1C-2A3B38FE681C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D306F18E-EFE5-4F6D-9F1C-2A3B38FE681C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D306F18E-EFE5-4F6D-9F1C-2A3B38FE681C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

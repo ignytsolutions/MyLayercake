@@ -1,14 +1,19 @@
+using MyLayercake.Core;
+using MyLayercake.DataProvider;
 using NUnit.Framework;
-using MyLayercake.BusinessObjects.Logic;
-using MyLayercake.BusinessObjects;
+using System;
 
 namespace MyLayercake.UnitTests {
-    public class TestObject : IEntity { }
+    public class TestObject : ISqlDBEntity { 
+        public Guid Oid { get; set; }
+        public DateTime Created { get; set; }
+    }
+
     public class Tests {
         [SetUp]
         public void Setup() {
-            Repository<TestObject> b = new Repository<TestObject>();
-            b.Dispose();
+            DataProvider<TestObject> b = new SqlDBDataProvider<TestObject>(new DatabaseSettings(string.Empty, string.Empty));
+   
         }
 
         private void B_Commited(object sender, System.EventArgs e) {

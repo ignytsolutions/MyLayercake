@@ -12,4 +12,10 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyLayercake.Core\MyLayercake.Core.csproj" />
+    <ProjectReference Include="..\MyLayercake.DataProvider\MyLayercake.DataProvider.csproj" />
+    <ProjectReference Include="..\MyLayercake.Sql\MyLayercake.Sql.csproj" />
+  </ItemGroup>
+
 </Project>

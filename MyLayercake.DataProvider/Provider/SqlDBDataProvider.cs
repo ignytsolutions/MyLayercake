@@ -1,4 +1,4 @@
-﻿using MyLayercake.DataProvider.Entity;
+﻿using MyLayercake.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,6 @@ namespace MyLayercake.DataProvider {
     // Template Design Pattern
     public class SqlDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : ISqlDBEntity {
         public SqlDBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
-
         }
 
         public override IQueryable<TEntity> AsQueryable() {
@@ -17,7 +16,7 @@ namespace MyLayercake.DataProvider {
         }
 
         public override void DeleteById(string oid) {
-            Sql.Data.Store.
+            throw new NotImplementedException();
         }
 
         public override Task DeleteByIdAsync(string oid) {

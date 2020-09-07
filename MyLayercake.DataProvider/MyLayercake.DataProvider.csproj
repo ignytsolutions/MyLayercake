@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.11.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyLayercake.Core\MyLayercake.Core.csproj" />
+    <ProjectReference Include="..\MyLayercake.Sql\MyLayercake.Sql.csproj" />
   </ItemGroup>
 
 </Project>

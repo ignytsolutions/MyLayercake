@@ -1,4 +1,4 @@
-﻿using MyLayercake.DataProvider.Entity;
+﻿using MyLayercake.Core;
 
 namespace MyLayercake.DataProvider.Factory {
     // Factory Design Pattern

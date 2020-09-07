@@ -1,12 +1,12 @@
 ﻿using MongoDB.Driver;
-using MyLayercake.DataProvider.Entity;
-using MyLayercake.DataProvider.Entity.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Linq;
 using MongoDB.Bson;
+using MyLayercake.Core.Attributes;
+using MyLayercake.Core;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
