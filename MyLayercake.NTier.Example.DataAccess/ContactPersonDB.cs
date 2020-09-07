@@ -59,6 +59,7 @@ namespace MyLayercake.NTier.Example.DataAccess {
                 using (SqlDataReader myReader = myCommand.ExecuteReader()) {
                     if (myReader.HasRows) {
                         tempList = new ContactPersonList();
+
                         while (myReader.Read()) {
                             tempList.Add(FillDataRecord(myReader));
                         }
