@@ -52,7 +52,6 @@ namespace MyLayercake.NTier.Example.DataAccess {
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString)) {
                 SqlCommand myCommand = new SqlCommand("sprocContactPersonSelectList", myConnection);
-                myCommand.CommandType = CommandType.StoredProcedure;
 
                 myConnection.Open();
 
@@ -79,6 +78,7 @@ namespace MyLayercake.NTier.Example.DataAccess {
         /// <returns>The new ID if the ContactPerson is new in the database or the existing ID when an item was updated.</returns>
         public static int Save(ContactPerson myContactPerson) {
             int result = 0;
+
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString)) {
                 SqlCommand myCommand = new SqlCommand("sprocContactPersonInsertUpdateSingleItem", myConnection);
                 myCommand.CommandType = CommandType.StoredProcedure;
@@ -116,6 +116,7 @@ namespace MyLayercake.NTier.Example.DataAccess {
 
                 myConnection.Close();
             }
+
             return result;
         }
 
@@ -128,12 +129,15 @@ namespace MyLayercake.NTier.Example.DataAccess {
             int result = 0;
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString)) {
                 SqlCommand myCommand = new SqlCommand("sprocContactPersonDeleteSingleItem", myConnection);
+                
                 myCommand.CommandType = CommandType.StoredProcedure;
                 myCommand.Parameters.AddWithValue("@id", id);
                 myConnection.Open();
                 result = myCommand.ExecuteNonQuery();
+
                 myConnection.Close();
             }
+
             return result > 0;
         }
 
