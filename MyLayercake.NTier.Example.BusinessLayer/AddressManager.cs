@@ -2,7 +2,9 @@ using MyLayercake.NTier.Example.BusinessObjects;
 using MyLayercake.NTier.Example.BusinessObjects.Collections;
 using MyLayercake.NTier.Example.DataAccess;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyLayercake.NTier.Example.BusinessLayer {
     /// <summary>
@@ -40,6 +42,16 @@ namespace MyLayercake.NTier.Example.BusinessLayer {
         /// <returns>The new ID if the Address is new in the database or the existing ID when an item was updated.</returns>
         [DataObjectMethod(DataObjectMethodType.Update | DataObjectMethodType.Insert, true)]
         public static int Save(Address myAddress) {
+            //var vResults = new List<ValidationResult>();
+            //var vc = new ValidationContext(instance: myAddress, serviceProvider: null, items: null);
+            //var isValid = Validator.TryValidateObject(instance: vc.ObjectInstance,validationContext: vc,validationResults: vResults,validateAllProperties: true);
+
+            //if (!isValid) {
+            //    foreach (var validationResult in vResults) {
+            //        yield return validationResult;
+            //    }
+            //}
+
             myAddress.Id = AddressDB.Save(myAddress);
 
             return myAddress.Id;

@@ -2,6 +2,8 @@ using MyLayercake.NTier.Example.BusinessObjects.Enums;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace MyLayercake.NTier.Example.BusinessObjects {
     /// <summary>
@@ -10,7 +12,7 @@ namespace MyLayercake.NTier.Example.BusinessObjects {
     [
       DebuggerDisplay("Address: {Street, nq} {HouseNumber, nq} {City, nq} - {Country, nq} ({Type, nq})")
     ]
-    public class Address {
+    public class Address : IValidatableObject {
 
         #region Private Variables
 
@@ -31,6 +33,7 @@ namespace MyLayercake.NTier.Example.BusinessObjects {
         /// Gets or sets the unique ID of the address.
         /// </summary>
         [DataObjectFieldAttribute(true, true, false)]
+        [Required]
         public int Id {
             get {
                 return id;
@@ -43,6 +46,7 @@ namespace MyLayercake.NTier.Example.BusinessObjects {
         /// <summary>
         /// Gets or sets the Street of the address.
         /// </summary>
+        [Required]
         public string Street {
             get {
                 return street;
@@ -126,5 +130,14 @@ namespace MyLayercake.NTier.Example.BusinessObjects {
 
         #endregion
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
+            var results = new List<ValidationResult>();
+
+            Validator.TryValidateProperty(this.Id, new ValidationContext(this, null, null) { MemberName = "Id" }, results);
+
+            Validator.TryValidateProperty(this.Street, new ValidationContext(this, null, null) { MemberName = "Street" }, results);
+
+            return results;
+        }
     }
 }
