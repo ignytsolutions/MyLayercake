@@ -71,45 +71,54 @@
     <Content Include="Alternatives\EditWithDataSet.aspx" />
     <Content Include="Alternatives\SqlDataSource.aspx" />
     <Content Include="Alternatives\UseApi.aspx" />
+    <Content Include="Css\Styles.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="SQL Scripts\NLayerDesign - SQL Server 2000.sql" />
     <Content Include="SQL Scripts\NLayerDesign - SQL Server 2005.sql" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddEditContactPerson.aspx.cs">
       <DependentUpon>AddEditContactPerson.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AddEditContactPerson.aspx.designer.cs">
+      <DependentUpon>AddEditContactPerson.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alternatives\EditWithDataSet.aspx.cs">
       <DependentUpon>EditWithDataSet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alternatives\EditWithDataSet.aspx.designer.cs">
+      <DependentUpon>EditWithDataSet.aspx</DependentUpon>
     </Compile>
     <Compile Include="Alternatives\SqlDataSource.aspx.cs">
       <DependentUpon>SqlDataSource.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Alternatives\SqlDataSource.aspx.designer.cs">
+      <DependentUpon>SqlDataSource.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alternatives\UseApi.aspx.cs">
       <DependentUpon>UseApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alternatives\UseApi.aspx.designer.cs">
+      <DependentUpon>UseApi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

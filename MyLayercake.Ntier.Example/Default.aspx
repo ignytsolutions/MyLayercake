@@ -1,5 +1,7 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MyLayercake.Ntier.Example.Default" %>
+
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
   <title>Contact Person Manager</title>
@@ -9,6 +11,8 @@
   <form id="form1" runat="server">
     <div>
       <asp:Button ID="btnNew" runat="server" OnClick="btnNew_Click" Text="Create new Contact Person" /><br />
+      <br />
+        <asp:Button ID="btnExportToCsv" runat="server" OnClick="btnExportToCsv_Click" Text="Export To CSV" /><br />
       <br />
       <asp:GridView ID="gvContactPersons" runat="server" AutoGenerateColumns="False" DataSourceID="odsContactPersons" DataKeyNames="Id" OnRowCommand="gvContactPersons_RowCommand" AllowPaging="True" CellPadding="4" GridLines="None">
         <Columns>
@@ -29,7 +33,7 @@
       </asp:GridView>
       <br />
       <br />
-      <asp:ObjectDataSource ID="odsContactPersons" runat="server" DataObjectTypeName="Spaanjaars.ContactManager.BO.ContactPerson" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="Spaanjaars.ContactManager.Bll.ContactPersonManager" UpdateMethod="Save"></asp:ObjectDataSource>
+      <asp:ObjectDataSource ID="odsContactPersons" runat="server" DataObjectTypeName="MyLayercake.NTier.Example.BusinessObjects.ContactPerson" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="MyLayercake.NTier.Example.BusinessLayer.ContactPersonManager" UpdateMethod="Save"></asp:ObjectDataSource>
       <asp:MultiView ID="MultiView1" runat="server">
         <asp:View ID="View1" runat="server">
           <fieldset>
@@ -46,7 +50,7 @@
                 <asp:BoundField DataField="Country" HeaderText="Country" />
                 <asp:TemplateField HeaderText="Type" SortExpression="Type">
                   <EditItemTemplate>
-                    <asp:DropDownList ID="lstType" runat="server" DataSource="<%#GetContactTypes() %>" SelectedValue='<%#Bind("Type") %>' />
+                    <asp:DropDownList ID="lstType" runat="server" DataSource="<%# GetContactTypes() %>" SelectedValue='<%#Bind("Type") %>' />
                   </EditItemTemplate>
                   <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Type") %>'></asp:Label>
@@ -78,7 +82,7 @@
                 <asp:TextBox ID="CountryTextBox" runat="server" Text='<%# Bind("Country") %>' />
                 <br />
                 <span class="Label">Type:</span>
-                <asp:DropDownList ID="lstType" runat="server" DataSource="<%#GetContactTypes() %>" SelectedValue='<%#Bind("Type") %>' />
+                <asp:DropDownList ID="lstType" runat="server" DataSource="<%# GetContactTypes() %>" SelectedValue='<%#Bind("Type") %>' />
                 <br />
                 <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert">
@@ -87,7 +91,7 @@
                 </asp:LinkButton>
               </InsertItemTemplate>
             </asp:FormView>
-            <asp:ObjectDataSource ID="odsAddresses" runat="server" DataObjectTypeName="Spaanjaars.ContactManager.BO.Address" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="Spaanjaars.ContactManager.Bll.AddressManager" UpdateMethod="Save">
+            <asp:ObjectDataSource ID="odsAddresses" runat="server" DataObjectTypeName="MyLayercake.NTier.Example.BusinessObjects.Address" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="MyLayercake.NTier.Example.BusinessLayer.AddressManager" UpdateMethod="Save">
               <SelectParameters>
                 <asp:ControlParameter ControlID="gvContactPersons" Name="contactPersonId" PropertyName="SelectedValue" Type="Int32" />
               </SelectParameters>
@@ -132,7 +136,7 @@
               </InsertItemTemplate>
             </asp:FormView>
           </fieldset>
-          <asp:ObjectDataSource ID="odsEmailAddresses" runat="server" DataObjectTypeName="Spaanjaars.ContactManager.BO.EmailAddress" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="Spaanjaars.ContactManager.Bll.EmailAddressManager" UpdateMethod="Save">
+          <asp:ObjectDataSource ID="odsEmailAddresses" runat="server" DataObjectTypeName="MyLayercake.NTier.Example.BusinessObjects.EmailAddress" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="MyLayercake.NTier.Example.BusinessLayer.EmailAddressManager" UpdateMethod="Save">
             <SelectParameters>
               <asp:ControlParameter ControlID="gvContactPersons" Name="contactPersonId" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
@@ -163,7 +167,7 @@
                 </asp:TemplateField>
               </Columns>
             </asp:GridView>
-            <asp:ObjectDataSource ID="odsPhoneNumbers" runat="server" DataObjectTypeName="Spaanjaars.ContactManager.BO.PhoneNumber" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="Spaanjaars.ContactManager.Bll.PhoneNumberManager" UpdateMethod="Save">
+            <asp:ObjectDataSource ID="odsPhoneNumbers" runat="server" DataObjectTypeName="MyLayercake.NTier.Example.BusinessObjects.PhoneNumber" DeleteMethod="Delete" InsertMethod="Save" SelectMethod="GetList" TypeName="MyLayercake.NTier.Example.BusinessObjects.PhoneNumberManager" UpdateMethod="Save">
               <SelectParameters>
                 <asp:ControlParameter ControlID="gvContactPersons" Name="contactPersonId" PropertyName="SelectedValue" Type="Int32" />
               </SelectParameters>

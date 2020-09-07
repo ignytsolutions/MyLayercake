@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyLayercake.Ntier.Example {
+namespace MyLayercake.Ntier.Example.Alternatives {
 
 
-    public partial class WebForm1 {
+    public partial class UseApi {
 
         /// <summary>
         /// form1 control.
