@@ -11,6 +11,7 @@ namespace MyLayercake.NTier.Example.BusinessObjects {
     [
       DebuggerDisplay("Person: {FullName, nq} Type: ({Type, nq})")
     ]
+    [Serializable]
     public class ContactPerson {
         #region Private Variables
 
