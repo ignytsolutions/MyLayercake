@@ -51,10 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyLayercake.NTier.Example.BusinesObjects\MyLayercake.NTier.Example.BusinesObjects.csproj">
-      <Project>{9b01d2fd-603c-48ac-9113-d8cc09f54519}</Project>
-      <Name>MyLayercake.NTier.Example.BusinesObjects</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyLayercake.NTier.Example.DataAccess\MyLayercake.NTier.Example.DataAccess.csproj">
       <Project>{68796925-4500-454a-bdbb-59a5cdfb8415}</Project>
       <Name>MyLayercake.NTier.Example.DataAccess</Name>

@@ -49,11 +49,5 @@
     <Compile Include="PhoneNumberDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyLayercake.NTier.Example.BusinesObjects\MyLayercake.NTier.Example.BusinesObjects.csproj">
-      <Project>{9b01d2fd-603c-48ac-9113-d8cc09f54519}</Project>
-      <Name>MyLayercake.NTier.Example.BusinesObjects</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

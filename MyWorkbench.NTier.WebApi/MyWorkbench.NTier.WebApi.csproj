@@ -135,20 +135,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyLayercake.NTier.Example.BusinesObjects\MyLayercake.NTier.Example.BusinesObjects.csproj">
-      <Project>{9b01d2fd-603c-48ac-9113-d8cc09f54519}</Project>
-      <Name>MyLayercake.NTier.Example.BusinesObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyLayercake.NTier.Example.BusinessLayer\MyLayercake.NTier.Example.BusinessLayer.csproj">
-      <Project>{d306f18e-efe5-4f6d-9f1c-2a3b38fe681c}</Project>
-      <Name>MyLayercake.NTier.Example.BusinessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyLayercake.NTier.Example.DataAccess\MyLayercake.NTier.Example.DataAccess.csproj">
-      <Project>{68796925-4500-454a-bdbb-59a5cdfb8415}</Project>
-      <Name>MyLayercake.NTier.Example.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
