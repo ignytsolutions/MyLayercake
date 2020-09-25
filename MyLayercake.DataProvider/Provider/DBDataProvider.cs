@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public class SqlDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity<Guid>, new() {
+    public class DBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity<Guid>, new() {
         private readonly IDatabaseContextFactory factory;
 
-        public SqlDBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
+        public DBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
             factory = new DatabaseContextFactory(new ConnectionProvider(DatabaseSettings.Provider, DatabaseSettings.ConnectionString));
         }
 

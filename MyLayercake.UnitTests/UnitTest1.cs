@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System;
 
 namespace MyLayercake.UnitTests {
-    public class TestObject : ISqlDBEntity { 
+    public class TestObject : IEntity<Guid> { 
         public Guid Oid { get; set; }
         public DateTime Created { get; set; }
     }
@@ -12,7 +12,7 @@ namespace MyLayercake.UnitTests {
     public class Tests {
         [SetUp]
         public void Setup() {
-            DataProvider<TestObject> b = new SqlDBDataProvider<TestObject>(new DatabaseSettings(string.Empty, string.Empty));
+            DataProvider<TestObject> b = new DBDataProvider<TestObject>(new DatabaseSettings(string.Empty, string.Empty, string.Empty));
    
         }
 

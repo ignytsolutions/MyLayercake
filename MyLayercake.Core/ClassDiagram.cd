@@ -1,79 +1,227 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MyLayercake.Core.DataAccess.DatabaseContextFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="16.5" Y="0.5" Width="1.5" />
+    <Position X="15.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\DatabaseContextFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.867" Collapsed="true" />
   </Class>
+  <Class Name="MyLayercake.Core.Attributes.BsonCollectionAttribute" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\BsonCollectionAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Attributes.DisplayNameAttribute" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\DisplayNameAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Attributes.ForeignKeyAttribute" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\ForeignKeyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Attributes.KeyAttribute" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\KeyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Attributes.RequiredAttribute" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\RequiredAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Extentions.DomainObjectCrudExtensions" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAEAAAAIEAAAAgAAABAAA=</HashCode>
+      <FileName>Extentions\DomainObjectCrudExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Extentions.DomainObjectExtensions" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAEAAAACAACAAAAAAIAAAAAAAAAAACEACAAACAAA=</HashCode>
+      <FileName>Extentions\DomainObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Extentions.IDatabaseContextExtentions" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extentions\IDatabaseContextExtentions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Extentions.IDataReaderExtentions" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extentions\IDataReaderExtentions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Extentions.IDbCommandExtentions" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAECAAAAAAAACAAAEAAEAgAAAQAAAAAA=</HashCode>
+      <FileName>Extentions\IDbCommandExtentions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Extentions.IEntityExtentions" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extentions\IEntityExtentions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Rules.ConcurrencyCheckRule" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACAAAAAIAAAA=</HashCode>
+      <FileName>Rules\ConcurrencyCheckRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Rules.GreaterThanZeroRule" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\GreaterThanZeroRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Rules.PropertyValueRequiredRule" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\PropertyValueRequiredRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.Rules.ValueRequiredRule" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAEAAAAEAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\ValueRequiredRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyLayercake.Core.RuleBase" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAgAAkgACAAAAAAAkAAAABAAAACAAAAQQAAAABAQA=</HashCode>
+      <FileName>RuleBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="MyLayercake.Core.DataAccess.IConnectionProvider" Collapsed="true">
-    <Position X="11" Y="3.25" Width="1.5" />
+    <Position X="13.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IConnectionProvider.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IDatabaseContext" Collapsed="true">
-    <Position X="5.5" Y="4.75" Width="1.5" />
+    <Position X="6" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IDatabaseContext.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IDatabaseContextFactory" Collapsed="true">
-    <Position X="7.75" Y="4.75" Width="4.25" />
+    <Position X="8.25" Y="5.75" Width="4.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IDatabaseContextFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IRepository&lt;T&gt;" Collapsed="true">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
       <FileName>DataAccess\IRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IRepositoryAsync&lt;T&gt;" Collapsed="true">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAIIA=</HashCode>
       <FileName>DataAccess\IRepositoryAsync.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IRepositoryBase&lt;T&gt;" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IRepositoryBase.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IRepositoryMany&lt;T&gt;" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="3.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IRepositoryMany.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IRepositoryManyAsync&lt;T&gt;" Collapsed="true">
-    <Position X="10.5" Y="0.5" Width="1.5" />
+    <Position X="8" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IRepositoryManyAsync.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyLayercake.Core.DataAccess.IUnitOfWork" Collapsed="true">
-    <Position X="3.25" Y="4.75" Width="1.5" />
+    <Position X="3.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEABAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataAccess\IUnitOfWork.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="System.IDisposable" Collapsed="true">
-    <Position X="7" Y="3.5" Width="1.5" />
+    <Position X="7.5" Y="4.5" Width="1.5" />
     <TypeIdentifier />
+  </Interface>
+  <Interface Name="MyLayercake.Core.IEntity" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.Core.IEntity&lt;TKey&gt;" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.Core.IVersionContainer" Collapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVersionContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.Core.IRulesContainer" Collapsed="true">
+    <Position X="17" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyLayercake.Core.IRule" Collapsed="true">
+    <Position X="15.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAQAAAAAAQA=</HashCode>
+      <FileName>RuleBase.cs</FileName>
+    </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
