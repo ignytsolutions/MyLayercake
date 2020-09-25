@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyLayercake.Core\MyLayercake.Core.csproj" />
-    <ProjectReference Include="..\MyLayercake.Sql\MyLayercake.Sql.csproj" />
   </ItemGroup>
 
 </Project>

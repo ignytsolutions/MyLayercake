@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public abstract class DataProvider<TEntity> where TEntity : IEntity {
+    public abstract class DataProvider<TEntity> where TEntity : IEntity, new() {
         protected IDatabaseSettings DatabaseSettings { get; set; }
 
         protected DataProvider(IDatabaseSettings DatabaseSettings) {
@@ -28,9 +28,9 @@ namespace MyLayercake.DataProvider {
 
         public abstract Task<IEnumerable<TEntity>> SelectAllAsync();
 
-        public abstract TEntity FindById(string oid);
+        public abstract TEntity FindById(object oid);
 
-        public abstract Task<TEntity> FindByIdAsync(string oid);
+        public abstract Task<TEntity> FindByIdAsync(object oid);
 
         public abstract void InsertOne(TEntity entity);
 
@@ -48,12 +48,12 @@ namespace MyLayercake.DataProvider {
 
         public abstract Task UpdateManyAsync(IEnumerable<TEntity> entities);
 
-        public abstract void DeleteById(string oid);
+        public abstract void DeleteById(TEntity entity);
 
-        public abstract Task DeleteByIdAsync(string oid);
+        public abstract Task DeleteByIdAsync(TEntity entity);
 
-        public abstract void DeleteMany(Expression<Func<TEntity, bool>> filterExpression);
+        public abstract void DeleteMany(IEnumerable<TEntity> entities);
 
-        public abstract Task DeleteManyAsync(Expression<Func<TEntity, bool>> filterExpression);
+        public abstract Task DeleteManyAsync(IEnumerable<TEntity> entities);
     }
 }

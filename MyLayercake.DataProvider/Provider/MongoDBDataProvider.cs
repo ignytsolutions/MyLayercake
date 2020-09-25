@@ -10,7 +10,7 @@ using MyLayercake.Core;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public class MongoDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IMongoDBEntity {
+    public class MongoDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity<ObjectId>, new() {
         private readonly IMongoCollection<TEntity> _collection;
 
         public MongoDBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
@@ -27,28 +27,30 @@ namespace MyLayercake.DataProvider {
             return _collection.AsQueryable();
         }
 
-        public override void DeleteById(string oid) {
-            var objectId = new ObjectId(oid);
+        public override void DeleteById(TEntity entity) {
+            var objectId = entity.Oid;
             var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
 
             _collection.FindOneAndDelete(filter);
         }
 
-        public override Task DeleteByIdAsync(string oid) {
+        public override Task DeleteByIdAsync(TEntity entity) {
             return Task.Run(() => {
-                var objectId = new ObjectId(oid);
+                var objectId = entity.Oid;
                 var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
 
                 _collection.FindOneAndDelete(filter);
             });
         }
 
-        public override void DeleteMany(Expression<Func<TEntity, bool>> filterExpression) {
-            _collection.DeleteMany(filterExpression);
+        public override void DeleteMany(IEnumerable<TEntity> entities) {
+            foreach (var entity in entities) {
+                DeleteById(entity);
+            }
         }
 
-        public override Task DeleteManyAsync(Expression<Func<TEntity, bool>> filterExpression) {
-            return Task.Run(() => _collection.DeleteManyAsync(filterExpression));
+        public override Task DeleteManyAsync(IEnumerable<TEntity> entities) {
+            return Task.Run(() => DeleteMany(entities) );
         }
 
         public override IEnumerable<TEntity> FilterBy(Expression<Func<TEntity, bool>> filterExpression) {
@@ -59,17 +61,17 @@ namespace MyLayercake.DataProvider {
             return Task.Run(() => _collection.Find(filterExpression).ToEnumerable());
         }
 
-        public override TEntity FindById(string oid) {
-            var objectId = new ObjectId(oid);
+        public override TEntity FindById(object oid) {
+            var objectId = new ObjectId(oid.ToString());
             var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
 
             return _collection.Find(filter).SingleOrDefault();
         }
 
-        public override Task<TEntity> FindByIdAsync(string oid) {
+        public override Task<TEntity> FindByIdAsync(object oid) {
             return Task.Run(() =>
             {
-                var objectId = new ObjectId(oid);
+                var objectId = new ObjectId(oid.ToString());
                 var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
                 return _collection.Find(filter).SingleOrDefaultAsync();
             });
