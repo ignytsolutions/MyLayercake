@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace MyLayercake.Core.Extentions {
+namespace MyLayercake.Core.Extensions {
     public static class DomainObjectCrudExtensions {
         private static readonly string _parameterPrefix = "@";
 
@@ -10,7 +10,7 @@ namespace MyLayercake.Core.Extentions {
             StringBuilder resultText = new StringBuilder();
 
             resultText.Append(string.Concat("DELETE FROM ", domainObject.ClassName()));
-            resultText.Append(string.Concat("WHERE ", domainObject.PrimaryKeyName(), " = ", _parameterPrefix, domainObject.PrimaryKeyName()));
+            resultText.Append(string.Concat(" WHERE ", domainObject.PrimaryKeyName(), " = ", _parameterPrefix, domainObject.PrimaryKeyName()));
 
 
             return resultText.ToString();
@@ -25,14 +25,14 @@ namespace MyLayercake.Core.Extentions {
 
             foreach (PropertyInfo property in domainObject.Properties()) {
                 if (domainObject.Properties().LastOrDefault().Equals(property)) {
-                    columnsText.Append(string.Concat(property.Name, ")"));
-                    resultText.Append(string.Concat(_parameterPrefix, property.Name, ")"));
+                    columnsText.Append(string.Concat(property.Name, ") "));
+                    valuesText.Append(string.Concat(_parameterPrefix, property.Name, ")"));
                 } else if (domainObject.Properties().FirstOrDefault().Equals(property)) {
-                    columnsText.Append(string.Concat("(", property.Name, ", "));
-                    resultText.Append(string.Concat("VALUES (", _parameterPrefix, property.Name, ", "));
+                    columnsText.Append(string.Concat(" (", property.Name, ", "));
+                    valuesText.Append(string.Concat(" VALUES (", _parameterPrefix, property.Name, ", "));
                 } else {
-                    resultText.Append(string.Concat(property.Name, ", "));
-                    resultText.Append(string.Concat(_parameterPrefix, property.Name, ", "));
+                    columnsText.Append(string.Concat(property.Name, ", "));
+                    valuesText.Append(string.Concat(_parameterPrefix, property.Name, ", "));
                 }
             }
 
@@ -46,19 +46,18 @@ namespace MyLayercake.Core.Extentions {
             StringBuilder resultText = new StringBuilder();
 
             resultText.Append(string.Concat("UPDATE ", domainObject.ClassName()));
-            resultText.Append("SET ");
 
             foreach (PropertyInfo property in domainObject.Properties()) {
                 if (domainObject.Properties().LastOrDefault().Equals(property)) {
                     resultText.Append(string.Concat(property.Name, " = ", _parameterPrefix, property.Name));
                 } else if (domainObject.Properties().FirstOrDefault().Equals(property)) {
-                    resultText.Append(string.Concat("SET ", property.Name, " = ", _parameterPrefix, property.Name, ","));
+                    resultText.Append(string.Concat(" SET ", property.Name, " = ", _parameterPrefix, property.Name, ","));
                 } else {
                     resultText.Append(string.Concat(property.Name, " = ", _parameterPrefix, property.Name, ","));
                 }
             }
 
-            resultText.Append(string.Concat("WHERE ", domainObject.PrimaryKeyName(), " = ", _parameterPrefix, domainObject.PrimaryKeyName()));
+            resultText.Append(string.Concat(" WHERE ", domainObject.PrimaryKeyName(), " = ", _parameterPrefix, domainObject.PrimaryKeyName()));
 
             return resultText.ToString();
         }
@@ -76,7 +75,7 @@ namespace MyLayercake.Core.Extentions {
                 }
             }
 
-            resultText.Append(string.Concat("FROM ", domainObject.ClassName()));
+            resultText.Append(string.Concat(" FROM ", domainObject.ClassName()));
 
             return resultText.ToString();
         }

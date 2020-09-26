@@ -10,13 +10,14 @@ using MyLayercake.Core;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public class MongoDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity<ObjectId>, new() {
+    public class MongoDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : MongoDBEntity, new() {
         private readonly IMongoCollection<TEntity> _collection;
+        private readonly IMongoDatabase _database;
 
         public MongoDBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
-            var database = new MongoClient(this.DatabaseSettings.ConnectionString).GetDatabase(this.DatabaseSettings.DatabaseName);
+            this._database = new MongoClient(this.DatabaseSettings.ConnectionString).GetDatabase(this.DatabaseSettings.DatabaseName);
 
-            _collection = database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+            this._collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
         }
 
         private protected string GetCollectionName(Type documentType) {
@@ -132,5 +133,8 @@ namespace MyLayercake.DataProvider {
             return Task.Run(() => { var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, entity.Oid);
                 _collection.FindOneAndReplace(filter, entity); } );
         }
+
+        // Handled Automatically by the MongoDB CLient
+        public override void Dispose() { }
     }
 }

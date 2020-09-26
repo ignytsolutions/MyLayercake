@@ -6,5 +6,7 @@ namespace MyLayercake.Core.DataAccess {
     public interface IDatabaseContext : IDisposable {
         IDbConnection Connection { get; }
         DbProviderFactory DbProviderFactory { get; }
+        void OpenConnection();
+        void CloseConnection();
     }
 }

@@ -5,9 +5,9 @@ using System.Data;
 using System.Reflection;
 using System.Linq;
 
-namespace MyLayercake.Core.Extentions {
+namespace MyLayercake.Core.Extensions {
     internal static class IDataReaderExtentions {
-        public static IEnumerable<T> DomainObjects<T>(this IDataReader reader) where T : IEntity<Guid>, new() {
+        public static IEnumerable<T> DomainObjects<T>(this IDataReader reader) where T : IEntity, new() {
             T tempObject;
             Collection<T> objects = new Collection<T>();
 
@@ -25,7 +25,7 @@ namespace MyLayercake.Core.Extentions {
 
             return objects;
         }
-        public static T DomainObject<T>(this IDataReader reader) where T : IEntity<Guid>, new() {
+        public static T DomainObject<T>(this IDataReader reader) where T : IEntity, new() {
             T tempObject = new T();
 
             while (reader.Read()) {

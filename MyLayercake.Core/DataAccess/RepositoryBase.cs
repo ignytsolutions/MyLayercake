@@ -1,11 +1,11 @@
-﻿using MyLayercake.Core.Extentions;
+﻿using MyLayercake.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
 namespace MyLayercake.Core.DataAccess {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>, IDisposable where TEntity : IEntity<Guid>, new() {
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>, IDisposable where TEntity : IEntity, new() {
         public IDatabaseContext Context { get; set; }
 
         public RepositoryBase(IDatabaseContext context) {
@@ -40,7 +40,7 @@ namespace MyLayercake.Core.DataAccess {
             using var command = Context.CreateCommand();
 
             command.CommandType = CommandType.Text;
-            command.CommandText = typeof(TEntity).BuildSelectText();
+            command.CommandText = new TEntity().BuildSelectText();
 
             return command.ExecuteReader().DomainObjects<TEntity>();
         }
@@ -53,7 +53,7 @@ namespace MyLayercake.Core.DataAccess {
             using var command = Context.CreateCommand();
 
             command.CommandType = CommandType.Text;
-            command.CommandText = typeof(TEntity).BuildSelectText();
+            command.CommandText = new TEntity().BuildSelectText();
             command.AddSelectByIDParamaters<TEntity>(oid);
 
             return command.ExecuteReader().DomainObject<TEntity>();

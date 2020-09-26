@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public abstract class DataProvider<TEntity> where TEntity : IEntity, new() {
+    public abstract class DataProvider<TEntity> : IDisposable where TEntity : IEntity, new() {
         protected IDatabaseSettings DatabaseSettings { get; set; }
 
         protected DataProvider(IDatabaseSettings DatabaseSettings) {
@@ -55,5 +55,7 @@ namespace MyLayercake.DataProvider {
         public abstract void DeleteMany(IEnumerable<TEntity> entities);
 
         public abstract Task DeleteManyAsync(IEnumerable<TEntity> entities);
+
+        public abstract void Dispose();
     }
 }

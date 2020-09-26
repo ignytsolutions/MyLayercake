@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 
-namespace MyLayercake.Core.Extentions {
+namespace MyLayercake.Core.Extensions {
 
     internal static class IDbCommandExtentions {
         private static Dictionary<Type, DbType> _typeMap;
@@ -88,6 +88,10 @@ namespace MyLayercake.Core.Extentions {
             command.Parameters.Add(param);
         }
 
+        public static void AddParam(this IDbCommand command, string name, object value, Type type) {
+            AddParameter(command, name, TypeMap[type], value);
+        }
+
         public static void AddParam(this IDbCommand command, string[] Names, object[] Vals) {
             for (int i = 0; i < Names.Length; i++) {
                 AddParameter(command, Names[i], TypeMap[Vals[i].GetType()], Vals[i]);
@@ -157,25 +161,25 @@ namespace MyLayercake.Core.Extentions {
 
         #region Create Crud Parameters
         public static void AddDeleteParamaters<T>(this IDbCommand command, T domainObject) {
-            command.AddParam(domainObject.PrimaryKeyName(), domainObject.PrimaryKeyValue());
+            command.AddParam(domainObject.PrimaryKeyName(), domainObject.PrimaryKeyValue(), domainObject.PrimaryKeyType());
         }
 
         public static void AddInsertParamaters<T>(this IDbCommand command, T domainObject) {
             foreach (PropertyInfo property in domainObject.Properties()) {
-                command.AddParam(property.Name, property.GetValue(domainObject));
+                command.AddParam(property.Name, property.GetValue(domainObject), property.PropertyType);
             }
         }
 
         public static void AddUpdateParamaters<T>(this IDbCommand command, T domainObject) {
             foreach (PropertyInfo property in domainObject.Properties()) {
-                command.AddParam(property.Name, property.GetValue(domainObject));
+                command.AddParam(property.Name, property.GetValue(domainObject), property.PropertyType);
             }
         }
 
-        public static void AddSelectByIDParamaters<T>(this IDbCommand command, object Oid) where T : IEntity<Guid>, new() {
+        public static void AddSelectByIDParamaters<T>(this IDbCommand command, object Oid) where T : IEntity, new() {
             T obj = new T();
 
-            command.AddParam(obj.PrimaryKeyName(), Oid);
+            command.AddParam(obj.PrimaryKeyName(), Oid, obj.PrimaryKeyType());
         }
         #endregion
     }

@@ -3,7 +3,7 @@ using MyLayercake.Core;
 
 namespace MyLayercake.DataProvider.Factory {
     // Factory Design Pattern
-    public class MongoDBFactory<TEntity> : ProviderFactory<TEntity> where TEntity : IEntity<ObjectId>, new() {
+    public class MongoDBFactory<TEntity> : ProviderFactory<TEntity> where TEntity : MongoDBEntity, new() {
         private IDatabaseSettings IDatabaseSettings { get; set; }
 
         public MongoDBFactory(IDatabaseSettings IDatabaseSettings) {

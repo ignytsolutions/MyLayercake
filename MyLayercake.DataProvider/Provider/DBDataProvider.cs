@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public class DBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : IEntity<Guid>, new() {
+    public class DBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : DBEntity, new() {
         private readonly IDatabaseContextFactory factory;
 
         public DBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
-            factory = new DatabaseContextFactory(new ConnectionProvider(DatabaseSettings.Provider, DatabaseSettings.ConnectionString));
+            this.factory = new DatabaseContextFactory(new ConnectionProvider(DatabaseSettings.Provider, DatabaseSettings.ConnectionString,DatabaseSettings.OpenConnection));
         }
 
         public override IQueryable<TEntity> AsQueryable() {
@@ -97,6 +97,11 @@ namespace MyLayercake.DataProvider {
 
         public override Task UpdateOneAsync(TEntity entity) {
             return new RepositoryBase<TEntity>(factory.Context).UpdateAsync(entity);
+        }
+
+        public override void Dispose() {
+            if (factory != null)
+                factory.Dispose();
         }
     }
 }

@@ -5,41 +5,52 @@ namespace MyLayercake.Core.DataAccess {
     public class DatabaseContext : IDatabaseContext {
         private IDbConnection _connection;
         private readonly IConnectionProvider _connectionProvider;
-        private DbProviderFactory _dbProviderFactory;
-
-        public DatabaseContext(IConnectionProvider connectionProvider) {
-            _connectionProvider = connectionProvider;
-        }
 
         public IDbConnection Connection {
             get {
-                if (_connection == null) {
-                    _connection = this._dbProviderFactory.CreateConnection();
-                    _connection.ConnectionString = this._connectionProvider.ConnectionString;
-                }
-
-                if (_connection.State != ConnectionState.Open) {
-                    _connection.Open();
-                }
-
-                return _connection;
+                return this._connection;
             }
         }
 
-        public DbProviderFactory DbProviderFactory {
-            get {
-                if (_dbProviderFactory == null) {
-                    _dbProviderFactory = DbProviderFactories.GetFactory(_connectionProvider.Provider);
-                }
+        public DbProviderFactory DbProviderFactory { get; private set; }
 
-                return _dbProviderFactory;
+
+        public DatabaseContext(IConnectionProvider connectionProvider) {
+            this._connectionProvider = connectionProvider;
+
+            this.CreateFactory();
+
+            if (connectionProvider.OpenConnection)
+                this.OpenConnection();
+        }
+
+        private void CreateFactory() {
+            if (DbProviderFactory == null) {
+                // TODO: Register Factory based on invariantname
+                DbProviderFactories.RegisterFactory("System.Data.SqlClient", System.Data.SqlClient.SqlClientFactory.Instance);
+
+                this.DbProviderFactory = DbProviderFactories.GetFactory(_connectionProvider.Provider);
             }
+        }
+
+        public void OpenConnection() {
+            if (_connection == null) {
+                this._connection = this.DbProviderFactory.CreateConnection();
+                this._connection.ConnectionString = this._connectionProvider.ConnectionString;
+            }
+
+            if (this._connection.State != ConnectionState.Open)
+                this._connection.Open();
+        }
+
+        public void CloseConnection() {
+            if (this._connection.State == ConnectionState.Open)
+                this._connection.Close();
         }
 
         public void Dispose() {
-            if (this._connection.State == ConnectionState.Open) {
+            if (this._connection.State == ConnectionState.Open)
                 this._connection.Close();
-            }
         }
     }
 }

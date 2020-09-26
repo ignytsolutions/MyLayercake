@@ -1,4 +1,4 @@
-﻿using MyLayercake.Core.Extentions;
+﻿using MyLayercake.Core.Extensions;
 
 namespace MyLayercake.Core.Rules {
 
