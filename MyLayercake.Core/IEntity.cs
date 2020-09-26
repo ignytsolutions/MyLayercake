@@ -1,5 +1,5 @@
-﻿using MyLayercake.Core.Attributes;
-using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyLayercake.Core {
     public interface IEntity {

@@ -10,113 +10,144 @@ using MyLayercake.Core;
 
 namespace MyLayercake.DataProvider {
     // Template Design Pattern
-    public class MongoDBDataProvider<TEntity> : DataProvider<TEntity> where TEntity : MongoDBEntity, new() {
-        private readonly IMongoCollection<TEntity> _collection;
+    public sealed class MongoDBDataProvider : DataProvider {
         private readonly IMongoDatabase _database;
 
         public MongoDBDataProvider(IDatabaseSettings DatabaseSettings) : base(DatabaseSettings) {
             this._database = new MongoClient(this.DatabaseSettings.ConnectionString).GetDatabase(this.DatabaseSettings.DatabaseName);
-
-            this._collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
         }
 
-        private protected string GetCollectionName(Type documentType) {
+        private string GetCollectionName(Type documentType) {
             return ((BsonCollectionAttribute)documentType.GetCustomAttributes(typeof(BsonCollectionAttribute),true).FirstOrDefault())?.CollectionName;
         }
 
-        public override IQueryable<TEntity> AsQueryable() {
-            return _collection.AsQueryable();
+        public override void DeleteById<TEntity>(TEntity entity) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            var objectId = (entity as MongoDBEntity).Oid;
+            var filter = Builders<TEntity>.Filter.Eq(doc => (doc as MongoDBEntity).Oid, objectId);
+
+            collection.FindOneAndDelete<TEntity>(filter);
         }
 
-        public override void DeleteById(TEntity entity) {
-            var objectId = entity.Oid;
-            var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
-
-            _collection.FindOneAndDelete(filter);
-        }
-
-        public override Task DeleteByIdAsync(TEntity entity) {
+        public override Task DeleteByIdAsync<TEntity>(TEntity entity) {
             return Task.Run(() => {
-                var objectId = entity.Oid;
-                var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
 
-                _collection.FindOneAndDelete(filter);
+                var objectId = (entity as MongoDBEntity).Oid;
+                var filter = Builders<TEntity>.Filter.Eq(doc => (doc as MongoDBEntity).Oid, objectId);
+
+                collection.FindOneAndDelete<TEntity>(filter);
             });
         }
 
-        public override void DeleteMany(IEnumerable<TEntity> entities) {
+        public override void DeleteMany<TEntity>(IEnumerable<TEntity> entities) {
             foreach (var entity in entities) {
                 DeleteById(entity);
             }
         }
 
-        public override Task DeleteManyAsync(IEnumerable<TEntity> entities) {
+        public override Task DeleteManyAsync<TEntity>(IEnumerable<TEntity> entities) {
             return Task.Run(() => DeleteMany(entities) );
         }
 
-        public override IEnumerable<TEntity> FilterBy(Expression<Func<TEntity, bool>> filterExpression) {
-            return _collection.Find(filterExpression).ToEnumerable();
+        public override IEnumerable<TEntity> FilterBy<TEntity>(Expression<Func<TEntity, bool>> filterExpression) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            return collection.Find(filterExpression).ToEnumerable();
         }
 
-        public override Task<IEnumerable<TEntity>> FilterByAsync(Expression<Func<TEntity, bool>> filterExpression) {
-            return Task.Run(() => _collection.Find(filterExpression).ToEnumerable());
-        }
+        public override Task<IEnumerable<TEntity>> FilterByAsync<TEntity>(Expression<Func<TEntity, bool>> filterExpression) {
+            return Task.Run(() => {
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
 
-        public override TEntity FindById(object oid) {
-            var objectId = new ObjectId(oid.ToString());
-            var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
-
-            return _collection.Find(filter).SingleOrDefault();
-        }
-
-        public override Task<TEntity> FindByIdAsync(object oid) {
-            return Task.Run(() =>
-            {
-                var objectId = new ObjectId(oid.ToString());
-                var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, objectId);
-                return _collection.Find(filter).SingleOrDefaultAsync();
+                return collection.Find(filterExpression).ToEnumerable();
             });
         }
 
-        public override TEntity FindOne(Expression<Func<TEntity, bool>> filterExpression) {
-            return _collection.Find(filterExpression).FirstOrDefault();
+        public override TEntity FindById<TEntity>(object oid) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            var objectId = new ObjectId(oid.ToString());
+
+            var filter = Builders<TEntity>.Filter.Eq(doc => (doc as MongoDBEntity).Oid, objectId);
+
+            return collection.Find(filter).SingleOrDefault();
         }
 
-        public override Task<TEntity> FindOneAsync(Expression<Func<TEntity, bool>> filterExpression) {
-            return Task.Run(() => _collection.Find(filterExpression).FirstOrDefaultAsync());
+        public override Task<TEntity> FindByIdAsync<TEntity>(object oid) {
+            return Task.Run(() =>
+            {
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+                var objectId = new ObjectId(oid.ToString());
+                var filter = Builders<TEntity>.Filter.Eq(doc => (doc as MongoDBEntity).Oid, objectId);
+
+                return collection.Find(filter).SingleOrDefaultAsync();
+            });
         }
 
-        public override void InsertMany(IEnumerable<TEntity> entities) {
-            _collection.InsertMany(entities);
+        public override TEntity FindOne<TEntity>(Expression<Func<TEntity, bool>> filterExpression) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            return collection.Find(filterExpression).FirstOrDefault();
         }
 
-        public override async Task InsertManyAsync(IEnumerable<TEntity> entities) {
-            await _collection.InsertManyAsync(entities);
+        public override Task<TEntity> FindOneAsync<TEntity>(Expression<Func<TEntity, bool>> filterExpression) {
+            return Task.Run(() => {
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+                return collection.Find(filterExpression).FirstOrDefaultAsync();
+            });
         }
 
-        public override void InsertOne(TEntity entity) {
-            _collection.InsertOne(entity);
+        public override void InsertMany<TEntity>(IEnumerable<TEntity> entities) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            collection.InsertMany(entities);
         }
 
-        public override Task InsertOneAsync(TEntity entity) {
-            return Task.Run(() => _collection.InsertOneAsync(entity));
+        public override async Task InsertManyAsync<TEntity>(IEnumerable<TEntity> entities) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            await collection.InsertManyAsync(entities);
         }
 
-        public override IEnumerable<TEntity> SelectAll() {
-            return _collection.Find(null).ToEnumerable<TEntity>();
+        public override void InsertOne<TEntity>(TEntity entity) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            collection.InsertOne(entity);
         }
 
-        public override Task<IEnumerable<TEntity>> SelectAllAsync() {
-            return Task.Run(() => _collection.Find(null).ToEnumerable<TEntity>());
+        public override Task InsertOneAsync<TEntity>(TEntity entity) {
+            return Task.Run(() => {
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+                collection.InsertOneAsync(entity);
+            });
         }
 
-        public override void UpdateMany(IEnumerable<TEntity> entities) {
+        public override IEnumerable<TEntity> SelectAll<TEntity>() {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+            return collection.Find(null).ToEnumerable<TEntity>();
+        }
+
+        public override Task<IEnumerable<TEntity>> SelectAllAsync<TEntity>() {
+            return Task.Run(() => {
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+
+                return collection.Find(null).ToEnumerable<TEntity>();
+            });
+        }
+
+        public override void UpdateMany<TEntity>(IEnumerable<TEntity> entities) {
             foreach (TEntity entity in entities) {
                 UpdateOne(entity);
             }
         }
 
-        public override Task UpdateManyAsync(IEnumerable<TEntity> entities) {
+        public override Task UpdateManyAsync<TEntity>(IEnumerable<TEntity> entities) {
             return Task.Run(() => {
                 foreach (TEntity entity in entities) {
                     UpdateOneAsync(entity);
@@ -124,14 +155,20 @@ namespace MyLayercake.DataProvider {
             });
         }
 
-        public override void UpdateOne(TEntity entity) {
-            var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, entity.Oid);
-            _collection.FindOneAndReplace(filter, entity);
+        public override void UpdateOne<TEntity>(TEntity entity) {
+            var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+            var filter = Builders<TEntity>.Filter.Eq(doc => (doc as MongoDBEntity).Oid, (entity as MongoDBEntity).Oid);
+
+            collection.FindOneAndReplace(filter, entity);
         }
 
-        public override Task UpdateOneAsync(TEntity entity) {
-            return Task.Run(() => { var filter = Builders<TEntity>.Filter.Eq(doc => doc.Oid, entity.Oid);
-                _collection.FindOneAndReplace(filter, entity); } );
+        public override Task UpdateOneAsync<TEntity>(TEntity entity) {
+            return Task.Run(() => {
+                var collection = this._database.GetCollection<TEntity>(GetCollectionName(typeof(TEntity)));
+                var filter = Builders<TEntity>.Filter.Eq(doc => (doc as MongoDBEntity).Oid, (entity as MongoDBEntity).Oid);
+
+                collection.FindOneAndReplace(filter, entity);
+            });
         }
 
         // Handled Automatically by the MongoDB CLient
