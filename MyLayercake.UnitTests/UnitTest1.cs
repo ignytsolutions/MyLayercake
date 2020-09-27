@@ -1,11 +1,10 @@
 using MyLayercake.Core;
-using MyLayercake.Core.Extensions;
 using MyLayercake.DataProvider;
+using MyLayercake.DataProvider.Factory;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace MyLayercake.UnitTests {
     public class TestObject : DBEntity { 
@@ -24,37 +23,34 @@ namespace MyLayercake.UnitTests {
 
         [Test]
         public void TestInsert() {
-            TestObject testObject = new TestObject() { Oid = Guid.NewGuid(), Created = DateTime.Now, Surname = "Alexander" };
+            TestObject testObject = new TestObject() { Name = "John", Surname = "Smith" };
 
-            
+            using IDBContext context = new DBContext(new DatabaseSettings(_database, _connectionString, _providerName, true));
+            context.Instance.InsertOne<TestObject>(testObject);
         }
 
-        //[Test]
-        //public void TestUpdate() {
-        //    using DataProvider<TestObject> provider = new DBDataProvider<TestObject>(new DatabaseSettings(_database, _connectionString, _providerName, true));
+        [Test]
+        public void TestUpdate() {
+            using IDBContext context = new DBContext(new DatabaseSettings(_database, _connectionString, _providerName, true));
+            context.Instance.UpdateOne(new TestObject() { Oid = Guid.Parse("484CEC1B-8516-455C-A117-0F97E54F6266"), Created = DateTime.Now, Name = "Gavin", Surname = "Smellexander", Age = 40, Salary = 45.85 });
+        }
 
-        //    provider.UpdateOne(new TestObject() { Oid = Guid.Parse("484CEC1B-8516-455C-A117-0F97E54F6266"), Created = DateTime.Now, Name = "Gavin", Surname = "Smellexander", Age = 40, Salary = 45.85 });
-        //}
+        [Test]
+        public void TestDelete() {
+            using IDBContext context = new DBContext(new DatabaseSettings(_database, _connectionString, _providerName, true));
+            context.Instance.DeleteById<TestObject>(new TestObject() { Oid = Guid.Parse("484CEC1B-8516-455C-A117-0F97E54F6266"), Created = DateTime.Now, Name = "Gavin", Surname = "Smellexander", Age = 40, Salary = 45.85 });
+        }
 
-        //[Test]
-        //public void TestDelete() {
-        //    using DataProvider<TestObject> provider = new DBDataProvider<TestObject>(new DatabaseSettings(_database, _connectionString, _providerName, true));
+        [Test]
+        public IEnumerable<TestObject> TestSelect() {
+            using IDBContext context = new DBContext(new DatabaseSettings(_database, _connectionString, _providerName, true));
+            return context.Instance.SelectAll<TestObject>();
+        }
 
-        //    provider.DeleteById(new TestObject() { Oid = Guid.Parse("484CEC1B-8516-455C-A117-0F97E54F6266"), Created = DateTime.Now, Name = "Gavin", Surname = "Smellexander", Age = 40, Salary = 45.85 });
-        //}
-
-        //[Test]
-        //public void TestSelect() {
-        //    using DataProvider<TestObject> provider = new DBDataProvider<TestObject>(new DatabaseSettings(_database, _connectionString, _providerName, true));
-            
-        //    provider.SelectAll();
-        //}
-
-        //[Test]
-        //public void TestSelectByID() {
-        //    using DataProvider<TestObject> provider = new DBDataProvider<TestObject>(new DatabaseSettings(_database, _connectionString, _providerName, true));
-
-        //    provider.FindById(Guid.Parse("CCD4390B-9A31-4441-BA7E-12F695EAB772"));
-        //}
+        [Test]
+        public TestObject TestSelectByID() {
+            using IDBContext context = new DBContext(new DatabaseSettings(_database, _connectionString, _providerName, true));
+            return context.Instance.FindById<TestObject>("CCD4390B-9A31-4441-BA7E-12F695EAB772");
+        }
     }
 }
